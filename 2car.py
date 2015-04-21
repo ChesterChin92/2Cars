@@ -86,16 +86,16 @@ while running_main:
 
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_z:
-                red_x_pos = red_x_pos - 10
+                red_x_pos = red_x_pos - 25
 
             elif event.key == pygame.K_x:
-                red_x_pos = red_x_pos + 10
+                red_x_pos = red_x_pos + 25
 
             elif event.key == pygame.K_m:
-                blue_x_pos = blue_x_pos - 10
+                blue_x_pos = blue_x_pos - 25
 
             elif event.key == pygame.K_n:
-                blue_x_pos = blue_x_pos + 10
+                blue_x_pos = blue_x_pos + 25
 
 
 
