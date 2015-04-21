@@ -9,6 +9,8 @@ import os
 
 # # # # DISPLAY # # # #
 # original 1080, 1920
+# TODO design a function for different resolution
+
 size = width, height = 800, 600
 screen = pygame.display.set_mode(size)
 
@@ -72,11 +74,57 @@ red_x_pos = 100
 red_y_pos = 100
 blue_x_pos = 200
 blue_y_pos = 200
+x = 0
+y = 0
+
+def move_circle():
+    global x
+    global y
+    global red_x_pos
+    global blue_x_pos
+    for counter in range(0,50):
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_z:
+                    red_x_pos = red_x_pos - 25
+
+                elif event.key == pygame.K_x:
+                    red_x_pos = red_x_pos + 25
+
+                elif event.key == pygame.K_m:
+                    blue_x_pos = blue_x_pos - 25
+
+                elif event.key == pygame.K_n:
+                    blue_x_pos = blue_x_pos + 25
+
+        x = x + counter
+        y = y + counter
+        screen.fill((255, 255, 255))
+        screen.blit(SquareImageBlue,(x,y))
+        screen.blit(carImageRed, (red_x_pos, red_y_pos))
+        screen.blit(carImageBlue, (blue_x_pos, blue_y_pos))
+        pygame.display.flip()
+        pygame.time.wait(20)
+        print(x)
+        print(y)
+        x = 0
+        y = 0
+
 
 while running_main:
+    global x
+    global y
     screen.fill((255, 255, 255))
     screen.blit(carImageRed, (red_x_pos, red_y_pos))
     screen.blit(carImageBlue, (blue_x_pos, blue_y_pos))
+    screen.blit(SquareImageBlue,(x,y))
+
+
 
     for event in pygame.event.get():
 
@@ -97,11 +145,18 @@ while running_main:
             elif event.key == pygame.K_n:
                 blue_x_pos = blue_x_pos + 25
 
+            elif event.key == pygame.K_SPACE:
+                print ("Space Key")
+                move_circle()
+
+
 
 
     pygame.display.flip()
-    print(red_x_pos, blue_y_pos)
+    # print(red_x_pos, blue_y_pos)
     pygame.time.wait(20)
 
+
+# Function
 
 
